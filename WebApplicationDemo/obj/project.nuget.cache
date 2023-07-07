@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "dgSpecHash": "mc4WXsIFLEKDtuiqIpjU/N/tmgk6fI+uAFSjqm1GmmH7BFrYNF8caekbqOUwEtLWjyyObod8sI2gI2Z+bbV45w==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\MBLAS\\source\\repos\\WebApplicationDemo\\WebApplicationDemo\\WebApplicationDemo.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\MBLAS\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\MBLAS\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\MBLAS\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
+    "C:\\Users\\MBLAS\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
+    "C:\\Users\\MBLAS\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
+    "C:\\Users\\MBLAS\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.2.3\\swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1803",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Está ejecutando la operación \"restore\" con un origen \"HTTP\", \"http://dev-was1.cunamas.gob.pe:8090/NugetPackageServer/nuget\". El acceso que no sea HTTPS se quitará en una versión futura. Considere la posibilidad de migrar a un origen \"HTTPS\"."
+    }
+  ]
+}

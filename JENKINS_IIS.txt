@@ -1,0 +1,40 @@
+https://www.c-sharpcorner.com/article/cicd-pipeline-using-jenkins-and-github-for-net-core-web-application/
+
+
+C:\Users\MBLAS\source\repos
+WebApplicationDemo
+
+
+bin\Release\net6.0\publish\
+C:\Users\MBLAS\source\repos\WebApplicationDemo\WebApplicationDemo\Properties\PublishProfiles\FolderProfile.pubxml
+
+
+<Project>
+  <PropertyGroup>
+    <DeleteExistingFiles>false</DeleteExistingFiles>
+    .
+	.
+	.
+    <WebPublishMethod>Package</WebPublishMethod>
+    
+	
+  </PropertyGroup>
+</Project>
+
+
+    <_TargetId>Folder</_TargetId>
+	
+	
+echo "# WebApplicationDemo" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/martinjbc/WebApplicationDemo.git
+git push -u origin main
+
+ Developer settings.
+ personal access token
+ 
+ 
+  ghp_oJcCsY1eysumjbc6a9KcPi3l8A2F5JvC792pB5cv
