@@ -38,3 +38,81 @@ git push -u origin main
  
  
   ghp_oJcCsY1eysumjbc6a9KcPi3l8A2F5JvC792pB5cv
+  
+  http://localhost:8079/
+  admin 
+  123456
+  
+  IIS:
+  
+	Site Name : Demo.web
+	Physical path : C:\inetpub\wwwroot\Demo
+	port : 5152
+	
+	net stop jenkins
+	"C:\Program Files\Jenkins\jenkins.exe" start
+  instalar plugins :
+		msbuild
+		mstest
+		git
+		Panel de Control -> Administrar Jenkins -> Tools
+			-> git
+				C:\Program Files\Git\bin\git.exe
+			-> MSBuild
+				Name : MS Build
+				Path to msbuild : C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\MSBuild.exe
+		
+		Panel de control -> todo -> Nueva Tarea
+			Name : TestPipeline
+			Tipo : Pipeline
+		
+		Build Triggers:
+			GitHub hook trigger for GITScm pollin
+			Periodo de espera
+				5 segundos
+		
+		Pipeline
+		
+			script:
+			
+			
+			
+			
+			script:
+				pipeline {
+					agent any
+					environment {
+						dotnet = 'C:\\Program Files\\dotnet\\dotnet.exe'
+					}
+					stages {
+						stage('Checkout Stage') {
+							steps {
+								git credentialsId: 'ghp_oJcCsY1eysumjbc6a9KcPi3l8A2F5JvC792pB5cv', url: 'https://github.com/martinjbc/WebApplicationDemo.git', branch: 'main'
+							}
+						}
+						stage('Build Stage') {
+							steps {
+								bat 'C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\TestPipeline\\WebApplicationDemo.sln --configuration Release'
+							}
+						}
+						stage('Test Stage') {
+							steps {
+								bat 'dotnet test %WORKSPACE%\\TestProject1\\TestProject1.csproj'
+							}
+						}
+						stage("Release Stage") {
+							steps {
+								bat 'dotnet build %WORKSPACE%\\WebApplicationDemo.sln /p:PublishProfile=" %WORKSPACE%\\WebApplicationDemo\\Properties\\PublishProfiles\\FolderProfile.pubxml" /p:Platform="Any CPU" /p:DeployOnBuild=true /m'
+							}
+						}
+						stage('Deploy Stage') {
+							steps {
+								//Deploy application on IIS
+								bat 'net stop "w3svc"'
+								bat '"C:\\Program Files (x86)\\IIS\\Microsoft Web Deploy V3\\msdeploy.exe" -verb:sync -source:package="%WORKSPACE%\\WebApplicationDemo\\bin\\Debug\\net6.0\\JenkinsWebApplicationDemo.zip" -dest:auto -setParam:"IIS Web Application Name"="Demo.Web" -skip:objectName=filePath,absolutePath=".\\\\PackagDemoeTmp\\\\Web.config$" -enableRule:DoNotDelete -allowUntrusted=true'
+								bat 'net start "w3svc"'
+							}
+						}
+					}
+				}
+				
